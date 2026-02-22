@@ -23,8 +23,8 @@ export type AnimatedGroupProps = {
     item?: Variants;
   };
   preset?: PresetType;
-  as?: React.ElementType;
-  asChild?: React.ElementType;
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  asChild?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
 };
 
 const defaultContainerVariants: Variants = {
@@ -42,57 +42,15 @@ const defaultItemVariants: Variants = {
 
 const presetVariants: Record<PresetType, Variants> = {
   fade: {},
-  slide: {
-    hidden: { y: 20 },
-    visible: { y: 0 },
-  },
-  scale: {
-    hidden: { scale: 0.8 },
-    visible: { scale: 1 },
-  },
-  blur: {
-    hidden: { filter: 'blur(4px)' },
-    visible: { filter: 'blur(0px)' },
-  },
-  'blur-slide': {
-    hidden: { filter: 'blur(4px)', y: 20 },
-    visible: { filter: 'blur(0px)', y: 0 },
-  },
-  zoom: {
-    hidden: { scale: 0.5 },
-    visible: {
-      scale: 1,
-      transition: { type: 'spring', stiffness: 300, damping: 20 },
-    },
-  },
-  flip: {
-    hidden: { rotateX: -90 },
-    visible: {
-      rotateX: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 20 },
-    },
-  },
-  bounce: {
-    hidden: { y: -50 },
-    visible: {
-      y: 0,
-      transition: { type: 'spring', stiffness: 400, damping: 10 },
-    },
-  },
-  rotate: {
-    hidden: { rotate: -180 },
-    visible: {
-      rotate: 0,
-      transition: { type: 'spring', stiffness: 200, damping: 15 },
-    },
-  },
-  swing: {
-    hidden: { rotate: -10 },
-    visible: {
-      rotate: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 8 },
-    },
-  },
+  slide: { hidden: { y: 20 }, visible: { y: 0 } },
+  scale: { hidden: { scale: 0.8 }, visible: { scale: 1 } },
+  blur: { hidden: { filter: 'blur(4px)' }, visible: { filter: 'blur(0px)' } },
+  'blur-slide': { hidden: { filter: 'blur(4px)', y: 20 }, visible: { filter: 'blur(0px)', y: 0 } },
+  zoom: { hidden: { scale: 0.5 }, visible: { scale: 1, transition: { type: 'spring', stiffness: 300, damping: 20 } } },
+  flip: { hidden: { rotateX: -90 }, visible: { rotateX: 0, transition: { type: 'spring', stiffness: 300, damping: 20 } } },
+  bounce: { hidden: { y: -50 }, visible: { y: 0, transition: { type: 'spring', stiffness: 400, damping: 10 } } },
+  rotate: { hidden: { rotate: -180 }, visible: { rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 15 } } },
+  swing: { hidden: { rotate: -10 }, visible: { rotate: 0, transition: { type: 'spring', stiffness: 300, damping: 8 } } },
 };
 
 const addDefaultVariants = (variants: Variants) => ({
@@ -116,11 +74,17 @@ function AnimatedGroup({
   const itemVariants = variants?.item || selectedVariants.item;
 
   const MotionComponent = React.useMemo(
-    () => motion.create(as as keyof JSX.IntrinsicElements),
+    () =>
+      motion.create(
+        as as keyof JSX.IntrinsicElements | React.ComponentType<any>
+      ),
     [as]
   );
   const MotionChild = React.useMemo(
-    () => motion.create(asChild as keyof JSX.IntrinsicElements),
+    () =>
+      motion.create(
+        asChild as keyof JSX.IntrinsicElements | React.ComponentType<any>
+      ),
     [asChild]
   );
 
