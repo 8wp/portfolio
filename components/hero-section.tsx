@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
@@ -6,8 +8,9 @@ import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { HeroHeader } from './header'
+import { Variants } from 'framer-motion'
 
-const transitionVariants = {
+const transitionVariants: Variants = {
     item: {
         hidden: {
             opacity: 0,
@@ -19,7 +22,7 @@ const transitionVariants = {
             filter: 'blur(0px)',
             y: 0,
             transition: {
-                type: 'spring',
+                type: 'spring' as const,
                 bounce: 0.3,
                 duration: 1.5,
             },
@@ -117,15 +120,15 @@ export default function HeroSection() {
                                         className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
                                         src="/landing-page1.png"
                                         alt="app screen"
-                                        width="2700"
-                                        height="1440"
+                                        width={2700}
+                                        height={1440}
                                     />
                                     <Image
                                         className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
                                         src="/landing-page-light1.png"
                                         alt="app screen"
-                                        width="2700"
-                                        height="1440"
+                                        width={2700}
+                                        height={1440}
                                     />
                                 </div>
                             </div>
