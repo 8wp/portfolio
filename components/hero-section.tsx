@@ -10,23 +10,13 @@ import { AnimatedGroup } from '@/components/ui/animated-group'
 import { HeroHeader } from './header'
 import { Variants } from 'framer-motion'
 
-const transitionVariants: Variants = {
-    item: {
-        hidden: {
-            opacity: 0,
-            filter: 'blur(12px)',
-            y: 12,
-        },
-        visible: {
-            opacity: 1,
-            filter: 'blur(0px)',
-            y: 0,
-            transition: {
-                type: 'spring' as const,
-                bounce: 0.3,
-                duration: 1.5,
-            },
-        },
+const itemVariants = {
+    hidden: { opacity: 0, filter: 'blur(12px)', y: 12 },
+    visible: {
+        opacity: 1,
+        filter: 'blur(0px)',
+        y: 0,
+        transition: { type: 'spring' as const, bounce: 0.3, duration: 1.5 },
     },
 }
 
