@@ -12,6 +12,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
+export type CarouselSize = "small" | "medium" | "large"
+
 const projects = [
   {
     name: "discord-trigger-message",
@@ -26,7 +28,7 @@ const projects = [
     description:
       "Locally hosted Python script that leverages the OpenAI API to implement a dynamic 20-questions style guessing game.",
     image: "/guess-who-ai1.jpg",
-    tech: ["Python", "OpenAI",],
+    tech: ["Python", "OpenAI"],
     link: "https://github.com/8wp/guess-who-ai",
   },
   {
@@ -40,7 +42,6 @@ const projects = [
 ]
 
 export default function CarouselSection() {
-
   const autoplayPlugin = Autoplay({ delay: 3500, stopOnInteraction: false })
 
   return (
@@ -70,7 +71,6 @@ export default function CarouselSection() {
                   className="block w-full max-w-xs"
                 >
                   <Card className="overflow-hidden flex flex-col justify-between transition-transform hover:scale-[1.03] hover:shadow-md">
-                    
                     <div className="w-full flex justify-center flex-shrink-0 p-3">
                       <div className="border border-border rounded-md p-1 bg-background w-full flex justify-center">
                         <Image
