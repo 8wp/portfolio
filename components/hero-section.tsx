@@ -8,7 +8,6 @@ import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { HeroHeader } from './header'
-import { Variants } from 'framer-motion'
 
 const itemVariants = {
     hidden: { opacity: 0, filter: 'blur(12px)', y: 12 },
@@ -64,9 +63,10 @@ export default function HeroSection() {
                                                 },
                                             },
                                         },
-                                        ...transitionVariants,
+                                        item: itemVariants,
                                     }}
-                                    className="mt-12 flex items-center gap-2">
+                                    className="mt-12 flex items-center gap-2"
+                                >
                                     <div
                                         key={1}
                                         className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
@@ -102,8 +102,9 @@ export default function HeroSection() {
                                         },
                                     },
                                 },
-                                ...transitionVariants,
-                            }}>
+                                item: itemVariants,
+                            }}
+                        >
                             <div className="mask-b-from-55% relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
                                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-5xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
                                     <Image
