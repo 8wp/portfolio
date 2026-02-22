@@ -73,7 +73,6 @@ function AnimatedGroup({
   const containerVariants = variants?.container || selectedVariants.container;
   const itemVariants = variants?.item || selectedVariants.item;
 
-  // TS-friendly: use React.ElementType instead of JSX.IntrinsicElements
   const MotionComponent = React.useMemo(() => motion.create(as), [as]);
   const MotionChild = React.useMemo(() => motion.create(asChild), [asChild]);
 
