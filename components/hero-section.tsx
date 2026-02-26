@@ -41,7 +41,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     as="h1"
                                     className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16">
-                                    Hey! I'm Cian Graham
+                                    Hey! I'm Cian Graham test
                                 </TextEffect>
                                 <TextEffect
                                     per="line"
